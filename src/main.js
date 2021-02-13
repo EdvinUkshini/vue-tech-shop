@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
-import firebase from "firebase"
+import firebase from "firebase";
 
 Vue.config.productionTip = false
 
+
+const settings = {timestampsInSnapshots:true};
 const configOptions = {
   apiKey: "AIzaSyAupUgl4zyTOcKsc3NQFO20_Hl2jJ4IxnQ",
   authDomain: "techshop-8ae54.firebaseapp.com",
@@ -18,6 +20,10 @@ const configOptions = {
 };
 
 firebase.initializeApp(configOptions);
+firebase.firestore().settings(settings);
+firebase.auth().onAuthStateChanged(user=>{
+  store.dispatch("fetchUser",user);
+});
 
 new Vue({
   router,
