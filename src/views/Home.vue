@@ -1,18 +1,25 @@
 <template>
-  <div>
-    <template v-if="user.loggedIn">
-        {{user.data.email}}
-        <button @click="signOut">Sign Out</button>
-    </template>
-    <template v-else>
-
-    </template>
+<div>
+  <Slideshow />
+  <Pc/>
   </div>
 </template>
+<style>
+.card__text, .v-card__title {
+    padding:0 !important;
+}
+</style>
 <script>
 import {mapGetters} from "vuex"
 import firebase from 'firebase'
+import Slideshow from '../components/Slideshow'
+import Pc from '../components/Pc'
+
 export default {
+  components:{
+    Slideshow,
+    Pc,
+  },
   computed:{
     ...mapGetters({
       user:"user"

@@ -4,8 +4,15 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import firebase from "firebase";
+import 'core-js';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 
 Vue.config.productionTip = false
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 
 const settings = {timestampsInSnapshots:true};
@@ -24,7 +31,14 @@ firebase.firestore().settings(settings);
 firebase.auth().onAuthStateChanged(user=>{
   store.dispatch("fetchUser",user);
 });
-
+firebase.getCurrentUser = ()=>{
+  return new Promise((resolve,reject)=>{
+    const unsubscribe = firebase.auth().onAuthStateChanged(user=>{
+      unsubscribe();
+      resolve(user);
+    },reject);
+  })
+};
 new Vue({
   router,
   store,
