@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Computer from '../views/Computer.vue'
 import AddComputer from '../components/AddComputer.vue'
+import AddLaptop from '../components/AddLaptop.vue'
 import firebase from "firebase"
 Vue.use(VueRouter)
 
@@ -31,6 +32,11 @@ const routes = [
         path: '/AddComputer',
         name:'AddComputer',
         component:AddComputer
+      },
+      {
+        path:'/AddLaptop',
+        name:'AddLaptop',
+        component:AddLaptop
       },
       {
         path: '/Login',

@@ -7,5 +7,6 @@ const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.pc = require("./Pc.model.js")(mongoose);
+db.laptop = require("./Laptop.model.js")(mongoose);
 
 module.exports = db;

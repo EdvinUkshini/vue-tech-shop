@@ -29,7 +29,7 @@ class DataService {
     return http.delete(`/Pc`);
   }
 
-  findByTitle(name) {
+  findByCPU(name) {
     return http.get(`/Pc?name=${name}`);
   }
 }

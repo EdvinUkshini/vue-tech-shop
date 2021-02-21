@@ -39,6 +39,7 @@ app.get("/", (req, res) => {
 });
 
 require("../routes/Pc.routes")(app);
+require("../routes/Laptop.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
