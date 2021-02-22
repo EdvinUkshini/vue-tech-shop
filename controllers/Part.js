@@ -1,11 +1,11 @@
 var path = require('path');
 const db = require("../models");
-const Laptop = db.laptop;
+const Part = db.part;
 
 global.appRoot = path.join(__dirname, '../');
 const uploadPath = appRoot.concat("/src/assets/images/products");
 
-// Create and Save a new Laptop
+// Create and Save a new Part
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.imgpath) {
@@ -13,66 +13,67 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a laptop
-  const laptop = new Laptop({
-    imgpath: req.body.imgpath,
+  // Create a part
+  const part = new Part({
+    imgpath:req.body.imgpath,
+    type:req.body.type,
+    manufacturer:req.body.manufacturer,
     name: req.body.name,
-    cpu: req.body.cpu,
     description: req.body.description,
     stock: req.body.stock,
     price: req.body.price
   });
 
-  // Save laptop in the database
-  laptop
-    .save(laptop)
+  // Save part in the database
+  part
+    .save(part)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the laptop."
+          err.message || "Some error occurred while creating the part."
       });
     });
 };
 
-// Retrieve all Laptops from the database.
+// Retrieve all Parts from the database.
 exports.findAll = (req, res) => {
-  const name = req.query.name;
+  const name = req.query.Manufacturer;
   const theLatest = req.query.theLatest;
-  var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
+  var condition = name ? { manufacturer: { $regex: new RegExp(name), $options: "i" } } : {};
 
-  Laptop.find(condition).limit(parseInt(theLatest))
+  Part.find(condition).limit(parseInt(theLatest))
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving laptops."
+          err.message || "Some error occurred while retrieving parts."
       });
     });
 };
 
-// Find a single Laptop with an id
+// Find a single Part with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Laptop.findById(id)
+  Part.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Laptop with id " + id });
+        res.status(404).send({ message: "Not found Part with id " + id });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Laptop with id=" + id });
+        .send({ message: "Error retrieving Part with id=" + id });
     });
 };
 
-// Update a Laptop Laptop the id in the request
+// Update a Part with the id in the request
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -82,56 +83,56 @@ exports.update = (req, res) => {
 
   const id = req.params.id;
 
-  Laptop.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  Part.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Laptop with id=${id}. Maybe Laptop was not found!`
+          message: `Cannot update Part with id=${id}. Maybe Part was not found!`
         });
-      } else res.send({ message: "Laptop was updated successfully." });
+      } else res.send({ message: "Part was updated successfully." });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Laptop with id=" + id
+        message: "Error updating Part with id=" + id
       });
     });
 };
 
-// Delete a Laptop with the specified id in the request
+// Delete a Part with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Laptop.findByIdAndRemove(id, { useFindAndModify: false })
+  Part.findByIdAndRemove(id, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Laptop with id=${id}. Maybe Laptop was not found!`
+          message: `Cannot delete Part with id=${id}. Maybe Part was not found!`
         });
       } else {
         res.send({
-          message: "Laptop was deleted successfully!"
+          message: "Part was deleted successfully!"
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Laptop with id=" + id
+        message: "Could not delete Part with id=" + id
       });
     });
 };
 
-// Delete all Laptop from the database.
+// Delete all Part from the database.
 exports.deleteAll = (req, res) => {
-    Laptop.deleteMany({})
+    Part.deleteMany({})
     .then(data => {
       res.send({
-        message: `${data.deletedCount} Laptop were deleted successfully!`
+        message: `${data.deletedCount} Part were deleted successfully!`
       });
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all Laptop."
+          err.message || "Some error occurred while removing all Part."
       });
     });
 };

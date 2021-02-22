@@ -1,3 +1,3 @@
 module.exports = {
-    url: "mongodb://localhost:27017/techstore"
+    url: "mongodb+srv://techstore:Techstore123@techstore.c5q4w.mongodb.net/Techstore?retryWrites=true&w=majority"
   };
