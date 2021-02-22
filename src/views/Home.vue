@@ -4,6 +4,7 @@
   <Pc/>
   <Laptop/>
   <Part/>
+  <Peripheral/>
   </div>
 </template>
 <style>
@@ -28,6 +29,7 @@ import Slideshow from '../components/Slideshow'
 import Pc from '../components/Pc'
 import Laptop from '../components/Laptop'
 import Part from '../components/Part'
+import Peripheral from '../components/Peripheral'
 
 export default {
   components:{
@@ -35,6 +37,7 @@ export default {
     Pc,
     Laptop,
     Part,
+    Peripheral,
   },
   computed:{
     ...mapGetters({

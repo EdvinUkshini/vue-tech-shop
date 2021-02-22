@@ -9,5 +9,6 @@ db.url = dbConfig.url;
 db.pc = require("./Pc.model.js")(mongoose);
 db.laptop = require("./Laptop.model.js")(mongoose);
 db.part = require("./Part.model.js")(mongoose);
+db.peripheral = require("./Peripheral.model.js")(mongoose);
 
 module.exports = db;
