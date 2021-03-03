@@ -41,7 +41,9 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const name = req.query.name;
   const theLatest = req.query.theLatest;
-  var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
+  const minPriceFilter = req.query.lessThan;
+  const maxPriceFilter = req.query.greaterThan;
+  var condition = name ? { cpu: { $regex: new RegExp(name), $options: "i" } } : {price: {$gte: minPriceFilter, $lte: maxPriceFilter}};
 
   Pc.find(condition).limit(parseInt(theLatest))
     .then(data => {
@@ -132,20 +134,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all pc."
-      });
-    });
-};
-
-// Find all published pc
-exports.findAllPublished = (req, res) => {
-  Pc.find({ published: true })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving pc."
       });
     });
 };

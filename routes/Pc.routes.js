@@ -9,9 +9,6 @@ module.exports = app => {
   // Retrieve all pc
   router.get("/", pc.findAll);
 
-  // Retrieve all published pc
-  router.get("/published", pc.findAllPublished);
-
   // Retrieve a single pc with id
   router.get("/:id", pc.findOne);
 
