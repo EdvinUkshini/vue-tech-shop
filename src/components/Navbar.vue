@@ -80,11 +80,11 @@
         data () {
             return {
                 items: [
-                    { title: 'Cpu', path:'cpu' },
-                    { title: 'Ram', path:'ram'},
-                    { title: 'Gpu', path:'gpu'},
-                    { title: 'Storage', path:'storage' },
-                    { title: 'Motherboard', path:'motherboard'},
+                    { title: 'Cpu', path:'/Parts/1' },
+                    { title: 'Ram', path:'/Parts/2'},
+                    { title: 'Gpu', path:'/Parts/3'},
+                    { title: 'Storage', path:'/Parts/4' },
+                    { title: 'Motherboard', path:'/Parts/5'},
                 ],
             }
         },

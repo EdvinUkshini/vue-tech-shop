@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class DataService {
-  getAll() {
-    return http.get("/Part");
+  getAll(type,lth,gth) {
+    return http.get(`/Part?type=${type}&lessThan=${lth}&greaterThan=${gth}`);
   }
 
   get(id) {
@@ -10,8 +10,9 @@ class DataService {
   }
   
   theLatest(number) {
-    return http.get(`/Part?theLatest=${number}`);
+    return http.get(`/Part?type=1&type=2&type=3&type=4&type=5&type=6&theLatest=${number}&lessThan=0&greaterThan=10000`);
   }
+
 
   create(data) {
     return http.post("/Part/", data);
@@ -29,8 +30,8 @@ class DataService {
     return http.delete(`/Part`);
   }
 
-  findByManufacturer(name) {
-    return http.get(`/Part?Manufacturer=${name}`);
+  findByManufacturer(type,name) {
+    return http.get(`/Part?type=${type}&Manufacturer=${name}`);
   }
 }
 

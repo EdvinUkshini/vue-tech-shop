@@ -41,8 +41,11 @@ exports.create = (req, res) => {
 // Retrieve all Parts from the database.
 exports.findAll = (req, res) => {
   const name = req.query.Manufacturer;
+  const type = req.query.type;
   const theLatest = req.query.theLatest;
-  var condition = name ? { manufacturer: { $regex: new RegExp(name), $options: "i" } } : {};
+  const minPriceFilter = req.query.lessThan;
+  const maxPriceFilter = req.query.greaterThan;
+  var condition = name ? { type:type, manufacturer: { $regex: new RegExp(name), $options: "i" } } : {type:type,price: {$gte: minPriceFilter, $lte: maxPriceFilter}};
 
   Part.find(condition).limit(parseInt(theLatest))
     .then(data => {
