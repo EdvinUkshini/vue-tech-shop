@@ -21,6 +21,9 @@
 .v-image__image--cover {
     background-size: unset !important;
 }
+.v-card__subtitle, .v-card__text, .v-card__title {
+    padding:0 !important;
+}
 </style>
 <script>
 import {mapGetters} from "vuex"

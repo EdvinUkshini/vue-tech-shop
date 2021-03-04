@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Computer from '../views/Computer.vue'
+import Laptop from '../views/Laptop.vue'
 import AddComputer from '../components/AddComputer.vue'
 import AddLaptop from '../components/AddLaptop.vue'
 import AddPart from '../components/AddPart.vue'
@@ -29,6 +30,11 @@ const routes = [
         path: '/Computers',
         name:'Computers',
         component:Computer
+      },
+      {
+        path: '/Laptops',
+        name:'Laptop',
+        component:Laptop
       },
       {
         path: '/AddComputer',

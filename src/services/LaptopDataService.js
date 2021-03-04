@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class DataService {
-  getAll() {
-    return http.get("/Laptop");
+  getAll(lth,gth) {
+    return http.get(`/Laptop?lessThan=${lth}&greaterThan=${gth}`);
   }
 
   get(id) {
@@ -10,7 +10,7 @@ class DataService {
   }
   
   theLatest(number) {
-    return http.get(`/Laptop?theLatest=${number}`);
+    return http.get(`/Laptop?theLatest=${number}&lessThan=0&greaterThan=10000`);
   }
 
   create(data) {

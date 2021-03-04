@@ -41,7 +41,9 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const name = req.query.name;
   const theLatest = req.query.theLatest;
-  var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
+  const minPriceFilter = req.query.lessThan;
+  const maxPriceFilter = req.query.greaterThan;
+  var condition = name ? { cpu: { $regex: new RegExp(name), $options: "i" } } : {price: {$gte: minPriceFilter, $lte: maxPriceFilter}};
 
   Laptop.find(condition).limit(parseInt(theLatest))
     .then(data => {
