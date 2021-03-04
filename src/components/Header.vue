@@ -22,15 +22,20 @@
       <v-btn icon>
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
-      <v-btn href="/Cart" icon>
-        <v-badge
-          content="2"
-          value="2"
-          color="green"
-          overlap
-        >
-          <v-icon>mdi-cart</v-icon>
-        </v-badge>
-      </v-btn>
+      <Cart />
     </v-app-bar>
     </template>
+
+<script>
+  import Cart from './Cart.vue'
+   export default {
+        name: 'Header',
+        components:{
+          Cart,
+          
+        },
+    }
+    
+
+  
+</script>

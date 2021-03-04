@@ -42,7 +42,9 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const name = req.query.Manufacturer;
   const theLatest = req.query.theLatest;
-  var condition = name ? { manufacturer: { $regex: new RegExp(name), $options: "i" } } : {};
+  const minPriceFilter = req.query.lessThan;
+  const maxPriceFilter = req.query.greaterThan;
+  var condition = name ? {manufacturer: { $regex: new RegExp(name), $options: "i" } } : {type: { $in: [ 0, 1, 2, 3, 4, 5, 6 ] },price: {$gte: minPriceFilter, $lte: maxPriceFilter}};
 
   Peripheral.find(condition).limit(parseInt(theLatest))
     .then(data => {

@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import Computer from '../views/Computer.vue'
 import Laptop from '../views/Laptop.vue'
 import Part from '../views/Part.vue'
+import Peripheral from '../views/Peripheral.vue'
 import AddComputer from '../components/AddComputer.vue'
 import AddLaptop from '../components/AddLaptop.vue'
 import AddPart from '../components/AddPart.vue'
@@ -41,6 +42,11 @@ const routes = [
         path: '/Parts/:type',
         name:'Part',
         component:Part
+      },
+      {
+        path: '/Peripherals',
+        name:'Peripheral',
+        component:Peripheral
       },
       {
         path: '/AddComputer',
