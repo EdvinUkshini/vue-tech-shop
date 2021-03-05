@@ -19,20 +19,19 @@
         class="hidden-sm-and-down pl-10 ml-4"
       />
       <v-spacer />
-      <v-btn icon>
-        <v-icon>mdi-account-circle</v-icon>
-      </v-btn>
+      <Profile />
       <Cart />
     </v-app-bar>
     </template>
 
 <script>
   import Cart from './Cart.vue'
+  import Profile from './Profile.vue'
    export default {
         name: 'Header',
         components:{
           Cart,
-          
+          Profile,
         },
     }
     

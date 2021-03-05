@@ -2,8 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '@/components/Layout'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
 import Computer from '../views/Computer.vue'
 import Laptop from '../views/Laptop.vue'
 import Part from '../views/Part.vue'
@@ -67,16 +65,6 @@ const routes = [
         path:'/AddPeripheral',
         name:'AddPeripheral',
         component:AddPeripheral
-      },
-      {
-        path: '/Login',
-        name:'Login',
-        component:Login
-      },
-      {
-        path: '/Register',
-        name:'Register',
-        component:Register
       },
     ]
   }

@@ -38,9 +38,6 @@
          <router-link to="/Peripherals" class="navItem item">
           <span>Peripherals</span>
         </router-link>
-        <router-link to="/Contact" class="navItem item">
-          <span>Contact Us</span>
-        </router-link>
       </v-bottom-navigation>     
      </template>
      <style>
