@@ -51,7 +51,7 @@
     </v-container>
 </template>
 <script>
-import DataService from "../services/LaptopDataService";
+import DataService from "../services/LaptopDataService"; //here
 export default {
   data() {
     return {
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     retrieveLaptops() {
-      DataService.theLatest(4)
+      DataService.theLatest(4) // DataService e bajna import ma nalt edhe qaj file e ka te definume metoden TheLatest qe e merr si parameter ni numer at this case 4 dmth 4 pc rightye
         .then(response => {
           this.Laptops = response.data;
           console.log(response.data);

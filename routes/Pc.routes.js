@@ -7,7 +7,7 @@ module.exports = app => {
   router.post("/", pc.create);
 
   // Retrieve all pc
-  router.get("/", pc.findAll);
+  router.get("/", pc.findAll); // qaj link qe ke metode get te referon te qekjo pc.findAll which is another metode per pcs
 
   // Retrieve a single pc with id
   router.get("/:id", pc.findOne);

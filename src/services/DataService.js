@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../http-common"; // qekjo dmth bahet import edhe qaty u thirr metoda the latest
 
 class DataService {
   getAll(lth,gth) {
@@ -9,8 +9,8 @@ class DataService {
     return http.get(`/Pc/${id}`);
   }
   
-  theLatest(number) {
-    return http.get(`/Pc?theLatest=${number}&lessThan=0&greaterThan=10000`);
+  theLatest(number) { // here speak ok i get it hoe
+    return http.get(`/Pc?theLatest=${number}&lessThan=0&greaterThan=10000`); // kjo ta kthen linkun per api
   }
 
   create(data) {

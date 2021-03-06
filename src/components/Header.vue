@@ -20,17 +20,28 @@
       />
       <v-spacer />
       <Profile />
-      <Cart />
+      <div class="dropdown">
+  <b-dropdown id="dropdown-offset" offset="25"  class="m-2"
+  
+  >
+    <MiniCart/>
+    <template v-slot:button-content> 
+      <v-icon>mdi-cart</v-icon>
+
+    </template>
+  </b-dropdown>
+</div>
+
     </v-app-bar>
     </template>
 
 <script>
-  import Cart from './Cart.vue'
+  import MiniCart from './MiniCart.vue'
   import Profile from './Profile.vue'
    export default {
         name: 'Header',
         components:{
-          Cart,
+          MiniCart,
           Profile,
         },
     }

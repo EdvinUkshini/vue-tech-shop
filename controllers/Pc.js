@@ -37,7 +37,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve all pcs from the database.
+// Retrieve all pcs from the database. 
 exports.findAll = (req, res) => {
   const name = req.query.name;
   const theLatest = req.query.theLatest;

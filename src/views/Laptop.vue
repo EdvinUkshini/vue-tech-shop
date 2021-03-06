@@ -95,7 +95,21 @@
                         class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 white--text"
                         style="height: 100%;"
                       >
-                        <v-btn v-if="hover" href="/product" class="" outlined>VIEW</v-btn>
+                        <v-btn
+                      href="/product"
+                      class="ma-2"
+                      outlined
+                      color="info"
+                    >
+                      View
+                    </v-btn>
+                    <v-btn
+                      outlined
+                      color="info"
+                     >
+                       <v-icon>mdi-cart</v-icon>
+                     </v-btn>
+
                       </div>
 
                     </v-expand-transition>

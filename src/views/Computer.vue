@@ -95,7 +95,21 @@
                         class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 white--text"
                         style="height: 100%;"
                       >
-                        <v-btn v-if="hover" href="/product" class="" outlined>VIEW</v-btn>
+                        <v-btn
+                      href="/product"
+                      class="ma-2"
+                      outlined
+                      color="info"
+                    >
+                      View
+                    </v-btn>
+                    <v-btn
+                      outlined
+                      color="info"
+                     >
+                       <v-icon>mdi-cart</v-icon>
+                     </v-btn>
+
                       </div>
 
                     </v-expand-transition>
@@ -155,7 +169,7 @@
 import DataService from "../services/DataService";
     export default {
         data: () => ({
-            range: [0, 10000],
+            range: [0, 10000], // 0 edhe 10000 kur te qelet qekjo faqe bahen pass
             breadcrums: [
                 {
                     text: 'Home',
@@ -181,7 +195,7 @@ import DataService from "../services/DataService";
         }),
          methods: {
             retrievePcs() {
-              DataService.getAll(this.range[0],this.range[1])
+              DataService.getAll(this.range[0],this.range[1]) // here,qetu i ka dy parametra qe initially jane 0 edhe 10000
                 .then(response => {
                   this.Pcs = response.data;
                   const Cpus = response.data.map(item => ({

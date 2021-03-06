@@ -19,6 +19,7 @@
                   <v-card
                     :elevation="hover ? 16 : 2"
                 >
+
                   <v-img
                     class="white--red align-end"
                     height="250px"
@@ -39,7 +40,10 @@
                     >
                       Explore
                     </v-btn>
+
+                     
                   </div>
+                  
                 </v-card>
                 </v-hover>
               </div>
@@ -50,19 +54,20 @@
       </v-row>
     </v-container>
 </template>
+
 <script>
-import DataService from "../services/DataService";
+import DataService from "../services/DataService"; // qekjo data service eshte veq per PCs
 export default {
   data() {
     return {
-      Pcs: [],
+      Pcs: [], // qe ky deklarohet array that niher
     };
   },
   methods: {
-    retrievePcs() {
-      DataService.theLatest(4)
+    retrievePcs() { // per mi marr veq 4 pcs mi qit nhome , dmth mi limitu mos me dal krejt aty
+      DataService.theLatest(4) // kjo e thirr linkin funksionin the latest e ka linkin e vet dmth tani qato data qe i qet qe i pave ne browser
         .then(response => {
-          this.Pcs = response.data;
+          this.Pcs = response.data; // Pcs array empty niher e mush me response data dmth response te linkit get it ye kqyre pa e ba import qat specific service line 64 nuk punon api
           console.log(response.data);
         })
         .catch(e => {
@@ -77,4 +82,4 @@ export default {
     this.retrievePcs();
   }
 };
-</script>
+</script> 
