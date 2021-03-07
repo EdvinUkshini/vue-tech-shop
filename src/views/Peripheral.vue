@@ -60,7 +60,9 @@
         <div
           class="col-md-9 col-sm-9 col-xs-12"
         >
-
+          <v-alert @if="actionResponse" :type="actionResponseType">
+            {{ actionResponseMessage }}
+          </v-alert>
           <v-breadcrumbs class="pb-0" :items="breadcrums"></v-breadcrumbs>
 
           <v-row dense>
@@ -103,9 +105,10 @@
                     >
                       View
                     </v-btn>
-                    <v-btn
+                     <v-btn
                       outlined
                       color="info"
+                      @click="addToCart(item)"
                      >
                        <v-icon>mdi-cart</v-icon>
                      </v-btn>
@@ -166,6 +169,8 @@
   }
 </style>
 <script>
+import {mapGetters} from "vuex"
+import { mapMutations } from "vuex";
 import DataService from "../services/PeripheralDataService";
     export default {
         data: () => ({
@@ -193,6 +198,10 @@ import DataService from "../services/PeripheralDataService";
             ],
             Peripherals: [],
             type:0,
+            product: new Object(),
+            actionResponse:false,
+            actionResponseType:null,
+            actionResponseMessage:"",
         }),
          methods: {
             retrievePeripherals() {
@@ -228,9 +237,27 @@ import DataService from "../services/PeripheralDataService";
           RangeChange(){
             this.retrievePeripherals();
           },
+          ...mapMutations(["ADD_TO_CART"]),
+          addToCart(product) {
+            if(this.user.loggedIn){
+            this.ADD_TO_CART(product);
+            this.actionResponse = true;
+            this.actionResponseType = "success"
+            this.actionResponseMessage = "Item added to cart"
+            }else{
+            this.actionResponse = true;
+            this.actionResponseType = "error"
+            this.actionResponseMessage = "You're currently not logged in"
+            }
+          },
         },
         mounted() {
           this.retrievePeripherals();
-        }
+        },
+        computed:{
+          ...mapGetters({
+            user:"user"
+          })
+        },
     }
 </script>

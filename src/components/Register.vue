@@ -95,7 +95,8 @@ import firebase from 'firebase'
                 .then(() => {});
             })
             .catch(err=>{
-                alert(err);
+              this.SignUpError=true;
+              this.SignUpErrorMessage=err;
             });
         },
 
