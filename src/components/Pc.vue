@@ -33,7 +33,7 @@
 
                   <div class="text-center">
                     <v-btn
-                      href="/shop"
+                      :to="`/details/pc/${item._id}`"
                       class="ma-2"
                       outlined
                       color="info"
