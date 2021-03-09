@@ -56,18 +56,18 @@
 </template>
 
 <script>
-import DataService from "../services/DataService"; // qekjo data service eshte veq per PCs
+import DataService from "../services/DataService"; 
 export default {
   data() {
     return {
-      Pcs: [], // qe ky deklarohet array that niher
+      Pcs: [], 
     };
   },
   methods: {
-    retrievePcs() { // per mi marr veq 4 pcs mi qit nhome , dmth mi limitu mos me dal krejt aty
-      DataService.theLatest(4) // kjo e thirr linkin funksionin the latest e ka linkin e vet dmth tani qato data qe i qet qe i pave ne browser
+    retrievePcs() { 
+      DataService.theLatest(4) 
         .then(response => {
-          this.Pcs = response.data; // Pcs array empty niher e mush me response data dmth response te linkit get it ye kqyre pa e ba import qat specific service line 64 nuk punon api
+          this.Pcs = response.data; 
           console.log(response.data);
         })
         .catch(e => {

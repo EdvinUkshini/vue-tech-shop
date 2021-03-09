@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown" style="min-width:320px;right:0; left:auto">
-    <template v-if="user.cart.length > 0">
+    <template v-if="((user.cart) && (user.cart.length>0))">
            <hr />
       <div style="overflow:scroll;overflow-x: hidden;max-height:400px;">
       <div
@@ -13,6 +13,7 @@
                     height="80px"
                     width="80px"
                     :src="getImage(item.imgpath)"
+                    alt=""
                   />
 
         <div>
@@ -29,7 +30,7 @@
       <hr />
       </div>
       </div>
-      <b>Total amount:</b> $ {{totalCartAmount}} 
+      <strong>Total amount:</strong> $ {{totalCartAmount}} 
   </template>
   <template v-else>
     <hr />

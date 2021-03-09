@@ -90,21 +90,12 @@
                     height="200px"
                     :src="getImage(item.imgpath)"
                   >
-                    <v-card-title>{{item.name}} </v-card-title>
                     <v-expand-transition>
                       <div
                         v-if="hover"
                         class="d-flex transition-fast-in-fast-out white darken-2 v-card--reveal display-3 white--text"
                         style="height: 100%;"
                       >
-                        <v-btn
-                      href="/product"
-                      class="ma-2"
-                      outlined
-                      color="info"
-                    >
-                      View
-                    </v-btn>
                     <v-btn
                       outlined
                       color="info"
@@ -118,14 +109,23 @@
                     </v-expand-transition>
                   </v-img>
                   <v-card-text class="text--primary">
-                    <div><a href="/product" style="text-decoration: none">{{item.name}}</a></div>
+                    <div><a href="" style="color:#00cc6a;text-decoration: none">{{item.name}}</a></div>
                     <div>${{item.price}}</div>
                   </v-card-text>
+                <v-card-actions>
+                  <router-link :to="`/details/part/${item._id}`" style="color:#00cc6a;">Details</router-link> 
+                </v-card-actions>
                 </v-card>
               </v-hover>
             </div>
             </template>
           </div>
+        </div>
+      </div>
+    </v-container>
+  </div>
+</template>
+<style>
         </div>
       </div>
     </v-container>
